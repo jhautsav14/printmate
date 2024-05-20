@@ -2,10 +2,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:printmate/src/constants/image_strings.dart';
 import 'package:printmate/src/constants/sizes.dart';
 import 'package:printmate/src/constants/text_string.dart';
 import 'package:printmate/src/features/authentication/pages/forgot_password/forgot_password_options/forgot_password_modal_bottom_sheet_widget.dart';
+import 'package:printmate/src/features/core/pages/dashboard/dashboard.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({
@@ -61,7 +63,9 @@ class LoginForm extends StatelessWidget {
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6))
                 ),
-                onPressed: (){}, 
+                onPressed: (){
+                  Get.to(()=> Dashboard());
+                }, 
                 child: Text(uLogin.toUpperCase())
               ),
             ),

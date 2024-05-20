@@ -1,9 +1,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:printmate/src/constants/image_strings.dart';
 import 'package:printmate/src/constants/sizes.dart';
 import 'package:printmate/src/constants/text_string.dart';
+import 'package:printmate/src/features/authentication/controllers/signup_controller.dart';
 
 class SignupForm extends StatelessWidget {
   const SignupForm({
@@ -12,7 +14,11 @@ class SignupForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final controller = Get.put(SignupController());
+    final _formKey = GlobalKey<FormState>();
     return Form(
+      key: _formKey,
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: uSize20),
         child: Column(
@@ -21,7 +27,7 @@ class SignupForm extends StatelessWidget {
             
     
             TextFormField(
-              
+              controller: controller.fullname,
               decoration: const InputDecoration(
                 
                 prefixIcon: Icon(Icons.person_2_outlined),
@@ -32,6 +38,7 @@ class SignupForm extends StatelessWidget {
             ),
             const SizedBox(height: uSize20-10,),
             TextFormField(
+              controller: controller.email,
               decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.email_outlined),
                 labelText: uEmail,
@@ -43,6 +50,7 @@ class SignupForm extends StatelessWidget {
             const SizedBox(height: uSize20-10,),
     
             TextFormField(
+              controller: controller.phoneNo,
               decoration: const InputDecoration(
                 
                 prefixIcon: Icon(Icons.phone_android_outlined),
@@ -56,6 +64,7 @@ class SignupForm extends StatelessWidget {
             const SizedBox(height: uSize20-10,),
     
             TextFormField(
+              controller: controller.password,
               obscureText: true,
               decoration: const InputDecoration(
                 
@@ -80,7 +89,12 @@ class SignupForm extends StatelessWidget {
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6))
                 ),
-                onPressed: (){}, 
+                onPressed: (){
+                  if (_formKey.currentState!.validate()) {
+                    SignupController.instance.registerUser(controller.email.toString(), controller.password.toString());
+                    
+                  }
+                }, 
                 child: Text(uSignup.toUpperCase())
               ),
             ),

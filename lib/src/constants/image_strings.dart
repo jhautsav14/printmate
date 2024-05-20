@@ -11,3 +11,5 @@ const String signinWithGoogle = "assets/images/google.png";
 
 const String forgotPasswordImage = "assets/images/forgot.png";
 const String otpImage = "assets/images/otp.png";
+
+const String profileImage = "assets/images/p.jpg";

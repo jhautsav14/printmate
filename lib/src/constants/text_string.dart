@@ -46,3 +46,9 @@ const String uForgotPasswordSubTitle = "Choose Email or Phone to Recover Your Ac
 
 
 
+
+// dashboard
+
+const String dashboardTitle = "Hello, Utsav!";
+const String dashboardSubtitle = "All Your Print and Stationery Needs in One Place";
+const String uDashboardSearch = "Search...";
