@@ -52,3 +52,27 @@ const String uForgotPasswordSubTitle = "Choose Email or Phone to Recover Your Ac
 const String dashboardTitle = "Hello, Utsav!";
 const String dashboardSubtitle = "All Your Print and Stationery Needs in One Place";
 const String uDashboardSearch = "Search...";
+
+
+// profile screen
+
+const String uProfile ="Profile";
+const String uUpdateProfile ="Update Profile";
+const String uEditeProfile ="Edit Profile";
+const String uLogOut ="Logout";
+const String uProfileHeading ="Utsav";
+const String uProfileSubHeading ="utsav@gmail.com";
+// menu
+
+const String uMenu1 ="Settings";
+const String uMenu2 ="Information";
+const String uMenu3 ="Orders";
+const String uMenu5 ="Carts";
+
+// update profile 
+
+const String uDelete ="Delete";
+const String uJoined ="Joined";
+const String uJoinedAt ="30 May 2024";
+
+

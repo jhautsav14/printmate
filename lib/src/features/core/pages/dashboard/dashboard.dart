@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:printmate/src/constants/image_strings.dart';
 import 'package:printmate/src/constants/sizes.dart';
 import 'package:printmate/src/constants/text_string.dart';
+import 'package:printmate/src/features/core/pages/profiles/profile_page.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -19,9 +21,13 @@ class Dashboard extends StatelessWidget {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: uSize20-10.0),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(uSize20+10),
-              child: Image(image: AssetImage(profileImage), width: 50,)
+            child: GestureDetector(
+              onTap: ()=> Get.to(()=>ProfilePage()),
+              child: ClipRRect(
+                
+                borderRadius: BorderRadius.circular(uSize20+10),
+                child: Image(image: AssetImage(profileImage), width: 50,)
+              ),
             ),
           )
         ],

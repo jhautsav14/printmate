@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:printmate/src/constants/image_strings.dart';
 import 'package:printmate/src/constants/sizes.dart';
 import 'package:printmate/src/constants/text_string.dart';
+import 'package:printmate/src/features/authentication/controllers/signup_controller.dart';
 import 'package:printmate/src/features/authentication/pages/forgot_password/forgot_password_options/forgot_password_modal_bottom_sheet_widget.dart';
 import 'package:printmate/src/features/core/pages/dashboard/dashboard.dart';
 
@@ -16,12 +17,16 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignupController());
+    final _formKey = GlobalKey<FormState>();
     return Form(
+      key: _formKey,
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: uSize20),
         child: Column(
           children: [
             TextFormField(
+              controller: controller.email,
               decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.person_outline_outlined),
                 labelText: uEmail,
@@ -33,6 +38,7 @@ class LoginForm extends StatelessWidget {
             const SizedBox(height: uSize20-10,),
     
             TextFormField(
+              controller: controller.password,
               obscureText: true,
               decoration: const InputDecoration(
                 
@@ -64,8 +70,11 @@ class LoginForm extends StatelessWidget {
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6))
                 ),
                 onPressed: (){
-                  Get.to(()=> Dashboard());
-                }, 
+                  if (_formKey.currentState!.validate()) {
+                    controller.loginUser(controller.email.text.trim(), controller.password.text.trim());
+                  }
+                }
+                , 
                 child: Text(uLogin.toUpperCase())
               ),
             ),

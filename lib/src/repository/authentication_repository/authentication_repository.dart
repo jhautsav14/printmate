@@ -33,6 +33,13 @@ class AuthenticationRepository extends GetxController{
     } on FirebaseAuthException catch(e){}
     catch (_) {}
   }
+// phone authentication
+  Future<void> phoneAuthentication(String phoneNo) async {
+    try {
+      await _auth.signInWithPhoneNumber(phoneNo);
+    } on FirebaseAuthException catch(e){}
+    catch (_) {}
+  }
 
 
   Future<void> loginWithEmailAndPassword(String email, String password) async {

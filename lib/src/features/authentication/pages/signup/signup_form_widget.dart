@@ -6,6 +6,7 @@ import 'package:printmate/src/constants/image_strings.dart';
 import 'package:printmate/src/constants/sizes.dart';
 import 'package:printmate/src/constants/text_string.dart';
 import 'package:printmate/src/features/authentication/controllers/signup_controller.dart';
+import 'package:printmate/src/features/authentication/models/user_model.dart';
 
 class SignupForm extends StatelessWidget {
   const SignupForm({
@@ -91,7 +92,14 @@ class SignupForm extends StatelessWidget {
                 ),
                 onPressed: (){
                   if (_formKey.currentState!.validate()) {
-                    SignupController.instance.registerUser(controller.email.toString(), controller.password.toString());
+                    final user = UserModel(
+                        fullName: controller.fullname.text.trim(), 
+                        email: controller.email.text.trim(), 
+                        phoneNo: controller.phoneNo.text.trim(), 
+                        password: controller.password.text.trim()
+                      );
+                    SignupController.instance.createUser(user);
+                    // SignupController.instance.registerUser(user.email, user.password);
                     
                   }
                 }, 
